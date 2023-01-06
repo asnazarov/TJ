@@ -1,7 +1,7 @@
 import MainLayout from "../../layouts/MainLayout";
 import FullPost from "../../components/FullPost";
 import {Divider, Paper, Tab, Tabs, Typography} from "@mui/material";
-import Comments from "../../components/Comments";
+import Comments from "../../components/Comment";
 
 export default function News() {
 

@@ -12,10 +12,8 @@ const Post = () => {
     <Paper elevation={0} className={"p-20"} classes={{root: styles.paper}}>
       <Typography variant={'h5'} className={styles.title}>
         <Link href={'news/test-123'}>
-          <a>
-            Кот прилег отдохнуть в английском парке миниатюр - и стал героем шуток и фотожаб о "гигантском пушистом
-            захватчике"
-          </a>
+          Кот прилег отдохнуть в английском парке миниатюр - и стал героем шуток и фотожаб о "гигантском пушистом
+          захватчике"
         </Link>
       </Typography>
       <Typography className={"mt-10 mb-15"}>

@@ -1,11 +1,12 @@
-import {FC, ReactElement} from "react";
+import {FC, ReactElement, ReactNode} from "react";
 import clsx from "clsx";
 import LeftMenu from "../components/LeftMenu";
 import SideComments from "../components/SideComments";
 
 
 interface MainLayoutProps {
-  children: ReactElement,
+  children?: ReactNode,
+  hideMenu?: boolean,
   hideComments?: boolean,
   contentFullWidth?: boolean,
   className?: string
@@ -14,16 +15,18 @@ interface MainLayoutProps {
 const MainLayout: FC<MainLayoutProps> = ({
                                            children,
                                            contentFullWidth,
+                                           hideMenu,
                                            hideComments,
                                            className
-
                                          }) => {
 
   return (
     <div className={clsx("wrapper", className)}>
-      <div className="leftSide">
-        <LeftMenu/>
-      </div>
+      {!hideMenu && (
+        <div className="leftSide">
+          <LeftMenu/>
+        </div>
+      )}
       <div className={clsx("content", {"content--full": contentFullWidth})}>
         {children}
       </div>

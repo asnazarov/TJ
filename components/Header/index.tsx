@@ -18,23 +18,23 @@ import Image from "next/image";
 const Header: FC = () => {
 
   return (
-    <Paper classes={{root: styles.root}} elevation={0}>
+    <Paper classes={{root: styles.root}} elevation={0} >
       <div className={"d-flex align-center"}>
         <IconButton>
           <MenuIcon/>
         </IconButton>
         <Link href={'/'}>
-          <a>
-            <Image src={logo} alt={'logo'} height={30} width={30}/>
-          </a>
+            <Image src={logo} alt={'logo'} className={styles.logo}/>
         </Link>
         <div className={styles.searchBlock}>
           <SearchIcon/>
           <input placeholder={'Поиск...'}/>
         </div>
-        <Button variant={"contained"} className={styles.penButton}>
-          Новая запись
-        </Button>
+        <Link href={'/write'}>
+          <Button variant={"contained"} className={styles.penButton}>
+            Новая запись
+          </Button>
+        </Link>
       </div>
 
       <div className={'d-flex align-center'}>
@@ -44,15 +44,13 @@ const Header: FC = () => {
         <IconButton>
           <NotificationIcon/>
         </IconButton>
-        <Link href={'/profile/1'}>
-          <a className={'d-flex align-center'}>
+        <Link href={'/profile/1'} className={'d-flex align-center'}>
             <Avatar
               className={styles.avatar}
               alt={'logo'}
               src={ava.src}
             />
             <ArrowButton/>
-          </a>
         </Link>
       </div>
 
