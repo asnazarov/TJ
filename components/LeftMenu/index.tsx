@@ -24,8 +24,8 @@ const LeftMenu: FC = () => {
       Left Menu
       <ul>
         {
-          menu.map((obj) => (
-            <li key={obj.path}>
+          menu.map((obj, index) => (
+            <li key={index}>
               <Link href={obj.path}>
                 <Button>
                   {obj.icon}

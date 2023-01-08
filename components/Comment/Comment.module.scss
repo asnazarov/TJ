@@ -1,9 +1,14 @@
 .comment {
-
+  margin-top: 16px;
 }
 
 .commentInfo {
-
+  img {
+    margin-right: 10px;
+    width: 70px;
+    object-fit: cover;
+    object-position: center;
+  }
 }
 
 .text {
@@ -11,5 +16,7 @@
 }
 
 .replyBtn {
+  cursor: pointer;
+  margin-right: 10px;
 
 }

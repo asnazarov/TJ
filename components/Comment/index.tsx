@@ -2,17 +2,14 @@ import {Typography, IconButton, MenuItem, Menu} from "@mui/material";
 import {MoreHorizOutlined as MoreIcon} from "@mui/icons-material";
 import styles from './Comment.module.scss'
 import {FC, useState} from "react";
-import ava from '../../assets/ava.png'
+import {CommentType} from "../SideComments";
 
 
 interface CommentPostProps {
-  user: {
-    fullname: string
-  },
-  text: string
+  item: CommentType
 }
 
-const Comment: FC<CommentPostProps> = ({user, text}) => {
+const Comment: FC<CommentPostProps> = ({item}) => {
 
   const [anchorlEL, setAnchorlEl] = useState(null)
 
@@ -27,9 +24,9 @@ const Comment: FC<CommentPostProps> = ({user, text}) => {
   return (
     <div className={styles.comment}>
       <div className={styles.commentInfo}>
-        <img src={ava.src} alt="ava"/>
-        <b>Master Oogway</b>
-        <span>5 часов</span>
+        <img src={item.user.avatarUrl} alt="ava"/>
+        <b>{item.user.fullname}</b>
+        {/*<span>{item.createdAt}</span>*/}
       </div>
       <Typography className={styles.text}>
         Суперджет это ад адский, два раза летела и два раза прощалась с жизнью. Трясет хуже чем в копейке по разъебаной
