@@ -11,6 +11,7 @@ import clsx from "clsx";
 export type CommentType = {
   id: number,
   user: {
+    id: number
     fullname: string,
     avatarUrl: string,
   },
@@ -38,7 +39,7 @@ const SideComments = () => {
       <h3 onClick={toggleVisible}>Комментарии <ArrowRightOutlined/></h3>
 
       {
-       visible && data.comments.new?.map((obj: CommentType) =>
+       visible && data.comments.popular?.map((obj: CommentType) =>
           <CommentItem key={obj.id} item={obj}/>)
       }
     </div>

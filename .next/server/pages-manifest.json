@@ -2,5 +2,7 @@
   "/_app": "pages/_app.js",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/news/[slug]": "pages/news/[slug].js"
+  "/": "pages/index.js",
+  "/news/[slug]": "pages/news/[slug].js",
+  "/profile/[id]": "pages/profile/[id].js"
 }

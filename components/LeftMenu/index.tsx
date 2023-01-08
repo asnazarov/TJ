@@ -9,25 +9,28 @@ import {
 import styles from './LeftMenu.module.scss'
 import {FC} from "react";
 import Link from "next/link";
+import {useRouter} from "next/router";
 
 const menu = [
   {text: 'Лента', icon: <FireIcon/>, path: '/'},
-  {text: 'Сообщения', icon: <MessageIcon/>, path: '/'},
-  {text: 'Рейтинг TJ', icon: <TrendingIcon/>, path: '/'},
-  {text: 'Подписки', icon: <ListIcon/>, path: '/'},
+  {text: 'Сообщения', icon: <MessageIcon/>, path: '/messages'},
+  {text: 'Рейтинг TJ', icon: <TrendingIcon/>, path: '/rating'},
+  {text: 'Подписки', icon: <ListIcon/>, path: '/follows'},
 ]
 
 const LeftMenu: FC = () => {
 
+  const router = useRouter()
+  console.log(router)
+
   return (
-    <div className={styles.menu}>
-      Left Menu
+    <nav className={styles.menu}>
       <ul>
         {
           menu.map((obj, index) => (
             <li key={index}>
               <Link href={obj.path}>
-                <Button>
+                <Button variant={ obj.path === router.asPath ? "contained" : "text"}>
                   {obj.icon}
                   {obj.text}
                 </Button>
@@ -36,7 +39,7 @@ const LeftMenu: FC = () => {
           ))
         }
       </ul>
-    </div>
+    </nav>
   )
 }
 
