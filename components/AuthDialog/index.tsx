@@ -2,6 +2,12 @@ import {Button, Dialog, DialogContent, DialogContentText, Divider, TextField, Ty
 import styles from './AuthDialog.module.scss'
 import {FC, useState} from "react";
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import Login from "./forms/Login";
+import Register from "./forms/Register";
+import Main from "./forms/Main";
+import LoginForm from "./forms/Login";
+import RegisterForm from "./forms/Register";
+import MainForm from "./forms/Main";
 
 interface AuthDialogType {
   onClose: () => void
@@ -9,11 +15,10 @@ interface AuthDialogType {
 }
 
 const AuthDialog: FC<AuthDialogType> = ({onClose, visible}) => {
-  const [formType, setFormType] = useState<'main' | 'email'>('main')
+  const [formType, setFormType] = useState<'main' | 'login' | 'register'>('main')
 
   return (
     <Dialog
-      // fullScreen={fullScreen}
       open={visible}
       onClose={onClose}
       aria-labelledby="responsive-dialog-title"
@@ -22,49 +27,12 @@ const AuthDialog: FC<AuthDialogType> = ({onClose, visible}) => {
     >
       <DialogContent style={{padding: '20px 60px'}}>
         <DialogContentText>
-          <Typography variant={'h4'} className={'mb-20'}>{formType === "main" ? 'Вход в TJ' : 'Вход через почту'}</Typography>
-          {formType === "main" && <>
-              <div>
-                <Button className={'mb-15'} variant={"outlined"} fullWidth>В контакте</Button>
-                <Button className={'mb-15'} variant={"outlined"} fullWidth>Google</Button>
-                <Button onClick={() => setFormType('email')} className={'mb-15'} variant={"outlined"} fullWidth>Через почту</Button>
-              </div>
-              <div className={'d-flex justify-between'} style={{width: '100%'}}>
-                <Button className={'mb-15 mr-10'} variant={"outlined"} fullWidth>Facebook</Button>
-                <Button className={'mb-15 mr-10'} variant={"outlined"} fullWidth>Twitter</Button>
-                <Button className={'mb-15'} variant={"outlined"} fullWidth>Apple</Button>
-              </div>
-            </>}
-          {formType === "email" && <div>
-            <p
-              className={'d-flex align-center cu-p mb-10'}
-              onClick={() => setFormType("main")}
-            >
-              <ArrowBackIosNewIcon fontSize={"small"}/>
-              <span>Назад</span></p>
-            <form>
-              <TextField
-                className={"mb-20"}
-                size={"small"}
-                label={"Почта"}
-                variant={"outlined"}
-                fullWidth
-                required
-              />
-              <TextField
-                size={"small"}
-                label={"Пароль"}
-                variant={"outlined"}
-                fullWidth
-                required
-              />
-              <Divider className={"mt-30 mb-20"}/>
-              <Button color={"primary"} variant={"contained"}>
-                Войти
-              </Button>
-            </form>
-          </div>}
-
+          <Typography variant={'h4'}
+                      className={'mb-20'}>{formType === "main" ? 'Вход в TJ' : 'Вход через почту'}</Typography>
+          {formType === "main" && <MainForm onOpenLogin={() => setFormType("login")}/>}
+          {formType === "login" &&
+            <LoginForm onOpenRegister={() => setFormType("register")} onBack={() => setFormType("main")}/>}
+          {formType === "register" && <RegisterForm onBack={() => setFormType("login")}/>}
         </DialogContentText>
       </DialogContent>
     </Dialog>
