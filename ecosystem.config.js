@@ -7,7 +7,7 @@ module.exports = {
   deploy: {
     production: {
       key: 'key.pem',
-      user: 'ubuntu',
+      user: 'asnnazfh',
       host: '62.113.100.32',
       ref: 'origin/main',
       repo: 'git@github.com:asnazarov/TJ.git',
